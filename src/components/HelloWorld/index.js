@@ -1,19 +1,41 @@
 import ToggleButton from '../ToggleButton/ToggleButton.vue';
 import roteiro from "../../assets/roteiro"
+import { find as linkifyFind } from 'linkifyjs'
 
 export default {
   components: { ToggleButton },
   data() {
     return {
       linkCount: 0,
+      resultsList: null,
+      iconFinderLinks: [],
     }
   },
   methods: {
-    filterAllText() {
-      const filter = /(?:(?:https?|ftp):\/\/|\b(?:[a-z\d]+\.))(?:(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))?\))+(?:\((?:[^\s()<>]+|(?:\(?:[^\s()<>]+\)))?\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))?/
-      const result = roteiro.match(/(?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])/igm
-      )
-      console.log(result)
+    filterAllLinks() {
+      this.resultsList = linkifyFind(roteiro);
+      this.filterIconfinderLinks()
     },
+
+    filterIconfinderLinks() {
+      this.resultsList.forEach((element) => {
+        let url = new URL(element.href);
+        if (url.protocol !== "https:") url.protocol = "https";
+
+        let lastPath = url.pathname.split("/")[3];
+        if (lastPath !== undefined) lastPath = undefined;
+
+        url.pathname =
+          url.pathname.split("/")[1] +
+          "/" +
+          url.pathname.split("/")[2] +
+          (lastPath = "");
+        url.pathname = url.pathname + "/download/svg/512";
+
+        if (url.origin === "https://www.iconfinder.com") this.iconFinderLinks.push(url);
+
+        this.linkCount = this.iconFinderLinks.length;
+      });
+    }
   },
 };
