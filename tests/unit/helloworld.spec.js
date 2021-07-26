@@ -1,8 +1,8 @@
 import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld/HelloWorld.vue';
+import HelloWorld from '@/components/Home/Home.vue';
 
 
-describe('HelloWorld.vue', () => {
+describe('Home.vue', () => {
 
   const wrapper = shallowMount(HelloWorld);
 
