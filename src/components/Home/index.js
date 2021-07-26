@@ -1,5 +1,5 @@
 import { find as linkifyFind } from "linkifyjs";
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapMutations } from "vuex";
 import ToggleButton from "../ToggleButton/ToggleButton.vue";
 import roteiro from "../../assets/roteiro";
 
@@ -14,17 +14,29 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["regexVersion", "rectState", "getLinks", "getIds"])
+    ...mapGetters([
+      "regexVersion",
+      "rectState",
+      "getLinks",
+      "getIds",
+      "getAllItemsCount",
+      "getTimeSaved"
+    ])
   },
 
   methods: {
-    ...mapActions(["setAllLinksInfo", "setOldIdsInfo"]),
+    ...mapMutations([
+       "setAllLinksInfo",
+       "setOldIdsInfo"
+    ]),
+
+    ...mapActions(["setNewIdsInfo"]),
 
     insumatorTasks() {
       this.filterAllLinks();
       this.filterIconfinderLinks();
       this.rectState ? this.filterOldIds() : this.filterNewIds();
-    },
+      },
 
     filterAllLinks() {
       this.allLinksList = linkifyFind(this.roteiroTeste);
@@ -53,6 +65,9 @@ export default {
       this.setOldIdsInfo(oldIdsList);
     },
 
-    filterNewIds() {}
-  }
+    filterNewIds() {
+      let allNewIdsList = this.roteiroTeste.match(this.regexVersion);
+      this.setNewIdsInfo(allNewIdsList)
+    }
+  },
 };

@@ -31,6 +31,8 @@ export default {
         });
         this.$refs.rect.style.fill = "#DCDCE5";
       }
+
+      this.$parent.insumatorTasks();
     }
   }
 };

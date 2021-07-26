@@ -9,7 +9,8 @@
         <div class="toggle-div">
         </div>
       </div>
-      <p>{{ this.getLinks.count }}</p>
+      <p>{{ this.getAllItemsCount }}</p>
+      <p>minutos: {{ this.getTimeSaved }} minutos</p>
       <ToggleButton/>
     </div>
   </div>
