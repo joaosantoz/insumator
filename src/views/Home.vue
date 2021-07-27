@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <nav>
-      <img id="logo" src="../assets/logo.svg" alt="">
+      <img src="../assets/logo.svg" id="logo" alt="">
       <p class="link-how-works">Como funciona?</p>
     </nav>
     <HelloWorld />
