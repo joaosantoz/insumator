@@ -2,9 +2,10 @@ import { find as linkifyFind } from "linkifyjs";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import ToggleButton from "../ToggleButton/ToggleButton.vue";
 import roteiro from "../../assets/roteiro";
+import ResultsContainer from "../ResultsContainer/ResultsContainer";
 
 export default {
-  components: { ToggleButton },
+  components: { ToggleButton, ResultsContainer },
   data() {
     return {
       allLinksList: null,

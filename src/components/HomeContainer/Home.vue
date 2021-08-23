@@ -8,6 +8,7 @@
           <button @click="insumatorTasks" class="button-filter button-primary">Extrair insumos</button>
           <ToggleButton/>
       </div>
+      <ResultsContainer/>
     </div>
   </div>
 </template>

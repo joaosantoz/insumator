@@ -1,0 +1,39 @@
+@media screen and (min-width: 1900px){
+    .footer{
+        bottom: -320px;
+    }
+}
+
+@media screen and (max-width: 1023px){
+    body{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .container-boxes {
+        justify-content: space-around !important;
+        gap: 20px;
+    }
+    p{
+        word-break: break-all;
+    }
+    #player iframe{
+        width: 100%;
+        height: 300px !important;
+    }
+}
+
+@media screen and (max-width: 700px){
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 40px 0 55px 0;
+        flex-wrap: wrap;
+        p{
+            margin-top: 50px;
+        }
+    }
+    #player iframe{
+        height: 150px !important;
+    }
+}

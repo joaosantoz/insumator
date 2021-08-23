@@ -1,10 +1,10 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import Home from '../../src/components/Home/Home'
+import Home from '../../src/components/HomeContainer/Home'
 import Vuex from 'vuex'
 import store from '../../src/store/index'
 import itemsStore from "../mocks/home.init";
 
-describe('Testes de store e renderização do componente Home', () => {
+describe('Testes de store e renderização do componente HomeContainer', () => {
   const localVue = createLocalVue()
   localVue.use(Vuex)
   const HomeComponent = mount(Home, {

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import HelloWorld from '../components/Home/Home.vue';
+import HelloWorld from '../components/HomeContainer/Home.vue';
 
 export default {
   name: 'Home',
