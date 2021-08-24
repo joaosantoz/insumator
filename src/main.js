@@ -3,7 +3,10 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 import store from './store';
-import './assets/styles/main.scss'
+import './styles/main.scss';
+import Clipboard from 'v-clipboard';
+
+Vue.use(Clipboard)
 
 Vue.config.productionTip = false;
 

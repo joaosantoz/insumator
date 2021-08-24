@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <router-view/>
-  </div>
+    <div class="content">
+      <nav>
+        <router-link to="/"><img src="./assets/logo.svg" id="logo" alt=""></router-link>
+        <router-link to="/help"><p class="link-how-works">Como funciona?</p></router-link>
+      </nav>
+      <div class="main-frame">
+        <router-view/>
+      </div>
+      </div>
+    </div>
 </template>
-
-<style lang="scss">
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-</style>

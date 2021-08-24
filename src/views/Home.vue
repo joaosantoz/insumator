@@ -1,20 +1,19 @@
 <template>
-  <div class="content">
-    <nav>
-      <img src="../assets/logo.svg" id="logo" alt="">
-      <p class="link-how-works">Como funciona?</p>
-    </nav>
-    <HelloWorld />
-  </div>
+    <div class="home">
+      <HomeContainer/>
+      <div class="footer">
+        <p>Uma ferramenta DOT, feita por DIs, DMs e Front <span>❤</span></p>
+      </div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from '../components/HomeContainer/Home.vue';
+import HomeContainer from '../components/HomeContainer/HomeContainer.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    HomeContainer,
   },
 };
 </script>

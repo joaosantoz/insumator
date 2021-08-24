@@ -1,8 +1,7 @@
 import { createLocalVue, mount } from '@vue/test-utils'
-import Home from '../../src/components/HomeContainer/Home'
+import Home from '../../src/components/HomeContainer/HomeContainer'
 import Vuex from 'vuex'
 import store from '../../src/store/index'
-import itemsStore from "../mocks/home.init";
 
 describe('Testes de store e renderização do componente HomeContainer', () => {
   const localVue = createLocalVue()
@@ -23,7 +22,6 @@ describe('Testes de store e renderização do componente HomeContainer', () => {
   it('Valores iniciais da store estão corretos', () => {
     expect(HomeComponent.vm.$store.state.regex).toBeFalsy();
     expect(HomeComponent.vm.$store.state.rectIsChecked).toBeFalsy();
-    expect(HomeComponent.vm.$store.state).toMatchObject(itemsStore)
   })
 
   it('Valores data iniciais estão corretos', () => {
@@ -35,7 +33,6 @@ describe('Testes de store e renderização do componente HomeContainer', () => {
     HomeComponent.find('button').trigger('click')
 
     expect(HomeComponent.vm.$store.state.allLinksInfo.list).not.toBeNull();
-    expect(HomeComponent.vm.$store.state.allIdsInfo).not.toBe(itemsStore.allIdsInfo);
   })
 
 })

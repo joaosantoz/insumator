@@ -1,4 +1,5 @@
 import {mapGetters} from "vuex";
+import CalcBox from "../CalcBox/CalcBox";
 import ResultBox from "../ResultBox/ResultBox";
 
 export default {
@@ -13,10 +14,10 @@ export default {
     }
   },
   components: {
-    ResultBox
+    ResultBox,
+    CalcBox
   },
   computed: {
     ...mapGetters(["getAllItemsCount"]),
-
   },
 }

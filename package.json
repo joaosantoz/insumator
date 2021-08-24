@@ -14,6 +14,7 @@
     "linkifyjs": "^3.0.0-beta.3",
     "node-sass": "^4.14.1",
     "register-service-worker": "^1.7.1",
+    "v-clipboard": "^2.2.3",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

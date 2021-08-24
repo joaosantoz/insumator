@@ -1,7 +1,6 @@
 import { find as linkifyFind } from "linkifyjs";
 import { mapGetters, mapActions, mapMutations } from "vuex";
 import ToggleButton from "../ToggleButton/ToggleButton.vue";
-import roteiro from "../../assets/roteiro";
 import ResultsContainer from "../ResultsContainer/ResultsContainer";
 
 export default {
@@ -10,7 +9,7 @@ export default {
     return {
       allLinksList: null,
       iconFinderLinks: [],
-      roteiroTeste: roteiro
+      inputRoteiro: '',
     };
   },
 
@@ -28,7 +27,8 @@ export default {
   methods: {
     ...mapMutations([
        "setAllLinksInfo",
-       "setOldIdsInfo"
+       "setOldIdsInfo",
+       "setFiltered"
     ]),
 
     ...mapActions(["setNewIdsInfo"]),
@@ -37,24 +37,22 @@ export default {
       this.filterAllLinks();
       this.filterIconfinderLinks();
       this.rectState ? this.filterOldIds() : this.filterNewIds();
+      this.setFiltered();
       },
 
     filterAllLinks() {
-      this.allLinksList = linkifyFind(this.roteiroTeste);
+      this.allLinksList = linkifyFind(this.inputRoteiro);
     },
 
     filterIconfinderLinks() {
       this.iconFinderLinks = [];
-      this.allLinksList.forEach(element => {
+      this.allLinksList.map(element => {
         let url = new URL(element.href);
-        let lastPath = url.pathname.split("/")[3];
 
         if (url.protocol !== "https:") url.protocol = "https";
-        if (lastPath !== undefined) lastPath = undefined;
         if (url.origin === "https://www.iconfinder.com") this.iconFinderLinks.push(url);
 
-        url.pathname =
-          url.pathname.split("/")[1] + "/" + url.pathname.split("/")[2] + (lastPath = "");
+        url.pathname = url.pathname.split("/")[1] + "/" + url.pathname.split("/")[2];
         url.pathname = url.pathname + "/download/svg/512";
 
         this.setAllLinksInfo(this.iconFinderLinks);
@@ -62,12 +60,12 @@ export default {
     },
 
     filterOldIds() {
-      let oldIdsList = this.roteiroTeste.match(this.regexVersion);
+      let oldIdsList = this.inputRoteiro.match(this.regexVersion);
       this.setOldIdsInfo(oldIdsList);
     },
 
     filterNewIds() {
-      let allNewIdsList = this.roteiroTeste.match(this.regexVersion);
+      let allNewIdsList = this.inputRoteiro.match(this.regexVersion);
       this.setNewIdsInfo(allNewIdsList)
     }
   },

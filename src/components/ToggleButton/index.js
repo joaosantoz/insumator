@@ -9,7 +9,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["rectState", "regexVersion"])
+    ...mapGetters(["rectState", "regexVersion", "getFiltered"])
   },
 
   methods: {
@@ -32,7 +32,7 @@ export default {
         this.$refs.rect.style.fill = "#DCDCE5";
       }
 
-      this.$parent.insumatorTasks();
+      if (this.getFiltered) this.$parent.insumatorTasks();
     }
   }
 };
